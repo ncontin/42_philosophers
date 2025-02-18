@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_syntax.c                                     :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 16:58:01 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 16:55:42 by ncontin          ###   ########.fr       */
+/*   Created: 2024/10/15 12:43:09 by ncontin           #+#    #+#             */
+/*   Updated: 2025/02/18 15:17:55 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../philo.h"
+#include "../../philo.h"
 
-int	check_syntax(char **args)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
-	int	j;
 
+	if (!s)
+		return ;
 	i = 0;
-	while (args[i])
+	while (s[i])
 	{
-		j = 0;
-		if (args[i][j] == '-')
-			return (1);
-		if (args[i][j] == '+' && ft_isdigit(args[i][j + 1]))
-			j++;
-		while (args[i][j])
-		{
-			if (!ft_isdigit(args[i][j]))
-				return (1);
-			j++;
-		}
+		write(fd, &s[i], 1);
 		i++;
 	}
-	return (0);
 }

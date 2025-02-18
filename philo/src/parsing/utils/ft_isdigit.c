@@ -1,37 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_syntax.c                                     :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 16:58:01 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 16:55:42 by ncontin          ###   ########.fr       */
+/*   Created: 2024/10/08 09:25:05 by ncontin           #+#    #+#             */
+/*   Updated: 2025/02/18 15:17:51 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../philo.h"
+#include "../../philo.h"
 
-int	check_syntax(char **args)
+int	ft_isdigit(int c)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (args[i])
-	{
-		j = 0;
-		if (args[i][j] == '-')
-			return (1);
-		if (args[i][j] == '+' && ft_isdigit(args[i][j + 1]))
-			j++;
-		while (args[i][j])
-		{
-			if (!ft_isdigit(args[i][j]))
-				return (1);
-			j++;
-		}
-		i++;
-	}
+	if (c >= '0' && c <= '9')
+		return (2048);
 	return (0);
 }

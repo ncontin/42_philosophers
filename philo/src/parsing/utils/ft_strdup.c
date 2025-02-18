@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_syntax.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 16:58:01 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 16:55:42 by ncontin          ###   ########.fr       */
+/*   Created: 2024/10/11 11:42:12 by ncontin           #+#    #+#             */
+/*   Updated: 2025/02/18 15:17:59 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../philo.h"
+#include "../../philo.h"
 
-int	check_syntax(char **args)
+char	*ft_strdup(const char *s)
 {
-	int	i;
-	int	j;
+	char	*dup;
+	int		i;
+	int		len;
 
+	len = ft_strlen(s);
+	dup = malloc(len + 1);
 	i = 0;
-	while (args[i])
+	if (!dup)
+		return (NULL);
+	while (i < len)
 	{
-		j = 0;
-		if (args[i][j] == '-')
-			return (1);
-		if (args[i][j] == '+' && ft_isdigit(args[i][j + 1]))
-			j++;
-		while (args[i][j])
-		{
-			if (!ft_isdigit(args[i][j]))
-				return (1);
-			j++;
-		}
+		dup[i] = s[i];
 		i++;
 	}
-	return (0);
+	dup[i] = '\0';
+	return (dup);
 }

@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_syntax.c                                     :+:      :+:    :+:   */
+/*   free_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 16:58:01 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 16:55:42 by ncontin          ###   ########.fr       */
+/*   Created: 2025/02/18 15:24:06 by ncontin           #+#    #+#             */
+/*   Updated: 2025/02/18 16:05:48 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../philo.h"
+#include "../../philo.h"
 
-int	check_syntax(char **args)
+void	free_array(char **array)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	while (args[i])
+	while (array[i])
 	{
-		j = 0;
-		if (args[i][j] == '-')
-			return (1);
-		if (args[i][j] == '+' && ft_isdigit(args[i][j + 1]))
-			j++;
-		while (args[i][j])
-		{
-			if (!ft_isdigit(args[i][j]))
-				return (1);
-			j++;
-		}
+		if (array[i])
+			free(array[i]);
 		i++;
 	}
-	return (0);
+	free(array);
 }

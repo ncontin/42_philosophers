@@ -6,32 +6,39 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:12 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 13:03:08 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/02/18 16:50:22 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_table	*init_table(char **argv)
+static void	init_table(t_table *table)
 {
-	t_table	*table;
+	table->philos_nbr = -1;
+	table->tt_die = -1;
+	table->tt_eat = -1;
+	table->tt_sleep = -1;
+	table->meals_per_philo = -1;
+}
 
-	table = malloc(sizeof(t_table));
-	if (!table)
-		return (NULL);
-	table->philos_nbr = ft_atol(argv[1]);
-	table->tt_die = ft_atol(argv[2]);
-	table->tt_eat = ft_atol(argv[3]);
-	table->tt_sleep = ft_atol(argv[4]);
-	table->meals_per_philo = ft_atol(argv[5]);
+static t_table	*set_table(char **args, t_table *table)
+{
+	init_table(table);
+	table->philos_nbr = ft_atol(args[0]);
+	table->tt_die = ft_atol(args[1]);
+	table->tt_eat = ft_atol(args[2]);
+	table->tt_sleep = ft_atol(args[3]);
+	if (args[4])
+		table->meals_per_philo = ft_atol(args[4]);
+	free_array(args);
 	return (table);
 }
 
 static int	check_argc(int argc)
 {
-	if (argc < 5 || argc > 6)
+	if (argc > 6)
 	{
-		write(2, "Invalid arguments\n", 18);
+		write(2, "Too many arguments\n", 18);
 		return (1);
 	}
 	return (0);
@@ -45,10 +52,13 @@ int	main(int argc, char **argv)
 	table = NULL;
 	if (check_argc(argc))
 		return (1);
-	args = parse(argv);
-	table = init_table(args);
+	args = parse_args(argv);
+	if (check_args(argv, args) == 1)
+		return (1);
+	table = malloc(sizeof(t_table));
 	if (!table)
 		return (1);
+	table = set_table(args, table);
 	printf("philos nbr: %d\n", table->philos_nbr);
 	free(table);
 }

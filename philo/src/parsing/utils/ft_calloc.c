@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_syntax.c                                     :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 16:58:01 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 16:55:42 by ncontin          ###   ########.fr       */
+/*   Created: 2024/10/11 10:24:57 by ncontin           #+#    #+#             */
+/*   Updated: 2025/02/18 15:28:43 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../philo.h"
+#include "../../philo.h"
 
-int	check_syntax(char **args)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int	i;
-	int	j;
+	void	*ptr;
 
-	i = 0;
-	while (args[i])
-	{
-		j = 0;
-		if (args[i][j] == '-')
-			return (1);
-		if (args[i][j] == '+' && ft_isdigit(args[i][j + 1]))
-			j++;
-		while (args[i][j])
-		{
-			if (!ft_isdigit(args[i][j]))
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
+	ptr = malloc(nmemb * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, nmemb * size);
+	return (ptr);
 }
