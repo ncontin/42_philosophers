@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 08:55:56 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 15:18:03 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/02/18 17:41:25 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "../../../philo.h"
 
 static int	find_start(char const *s1, char const *set)
 {

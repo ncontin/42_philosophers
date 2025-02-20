@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:08:13 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 15:55:26 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/02/20 18:38:05 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,44 @@ static char	*join_args(char **argv)
 	return (args);
 }
 
-char	**parse_args(char **argv)
+static int	check_argc(int argc)
+{
+	if (argc < 5 || argc > 6)
+	{
+		write(2, "Invalid arguments\n", 19);
+		return (1);
+	}
+	return (0);
+}
+
+static t_table	*set_table(char **args, t_table *table)
+{
+	table->philos_nbr = ft_atol(args[0]);
+	table->tt_die = ft_atol(args[1]);
+	table->tt_eat = ft_atol(args[2]);
+	table->tt_sleep = ft_atol(args[3]);
+	if (args[4])
+		table->meals_per_philo = ft_atol(args[4]);
+	else
+		table->meals_per_philo = -1;
+	free_array(args);
+	return (table);
+}
+
+int	parse_args(char **argv, int argc, t_table *table)
 {
 	char	*joined;
 	char	**args;
 
+	if (check_argc(argc) == 1)
+		return (1);
 	joined = join_args(argv + 1);
 	if (!joined)
-		return (NULL);
+		return (1);
 	args = ft_split(joined, ' ');
 	free(joined);
-	return (args);
+	if (check_args(argv, args) == 1)
+		return (1);
+	set_table(args, table);
+	return (0);
 }

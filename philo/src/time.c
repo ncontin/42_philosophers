@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/13 23:26:23 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 17:41:20 by ncontin          ###   ########.fr       */
+/*   Created: 2025/02/18 17:06:09 by ncontin           #+#    #+#             */
+/*   Updated: 2025/02/19 11:47:32 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../philo.h"
+#include "../philo.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static size_t	get_time(void)
 {
-	size_t	tot_len;
-	size_t	i;
-	size_t	j;
-	char	*res;
+	struct timeval	time;
 
-	if (!s1 || !s2)
-		return (NULL);
-	i = 0;
-	tot_len = (ft_strlen(s1) + ft_strlen(s2));
-	res = malloc(tot_len + 1);
-	if (!res)
-		return (NULL);
-	while (s1[i])
-	{
-		res[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-		res[i++] = s2[j++];
-	res[i] = '\0';
-	return (res);
+	if (gettimeofday(&time, NULL) == -1)
+		write(2, "gettimeofday() error\n", 22);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+int	ft_usleep(size_t milliseconds)
+{
+	size_t	start;
+
+	start = get_time();
+	while ((get_time() - start) < milliseconds)
+		usleep(500);
+	return (0);
 }

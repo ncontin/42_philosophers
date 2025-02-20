@@ -6,101 +6,65 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:12 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 16:50:22 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/02/20 18:49:16 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	init_table(t_table *table)
+static void	init_philos(t_table *table, t_philo *philos)
 {
-	table->philos_nbr = -1;
-	table->tt_die = -1;
-	table->tt_eat = -1;
-	table->tt_sleep = -1;
-	table->meals_per_philo = -1;
-}
+	int	i;
 
-static t_table	*set_table(char **args, t_table *table)
-{
-	init_table(table);
-	table->philos_nbr = ft_atol(args[0]);
-	table->tt_die = ft_atol(args[1]);
-	table->tt_eat = ft_atol(args[2]);
-	table->tt_sleep = ft_atol(args[3]);
-	if (args[4])
-		table->meals_per_philo = ft_atol(args[4]);
-	free_array(args);
-	return (table);
-}
-
-static int	check_argc(int argc)
-{
-	if (argc > 6)
+	i = 0;
+	table->philos = philos;
+	while (i < table->philos_nbr)
 	{
-		write(2, "Too many arguments\n", 18);
-		return (1);
+		table->philos->philo_id = i++;
+		printf("philo id: %d\n", table->philos->philo_id);
 	}
-	return (0);
 }
+
+void	test(void)
+{
+	printf("start\n");
+	// ft_usleep(3000);
+	printf("end\n");
+}
+
+void	print_table(t_table *table)
+{
+	printf("philos_nbr: %d\n", table->philos_nbr);
+	printf("tt_die: %d\n", table->tt_die);
+	printf("tt_eat: %d\n", table->tt_eat);
+	printf("tt_sleep: %d\n", table->tt_sleep);
+	printf("meals_per_philo: %d\n", table->meals_per_philo);
+}
+
+// void	start_dinner(t_table *table, t_philosopher *philo)
+// {
+// }
 
 int	main(int argc, char **argv)
 {
-	t_table	*table;
-	char	**args;
+	t_table	table[1];
+	t_philo	*philos;
 
-	table = NULL;
-	if (check_argc(argc))
+	if (parse_args(argv, argc, table) == 1)
 		return (1);
-	args = parse_args(argv);
-	if (check_args(argv, args) == 1)
+	philos = malloc(sizeof(t_philo) * table->philos_nbr);
+	if (!philos)
 		return (1);
-	table = malloc(sizeof(t_table));
-	if (!table)
-		return (1);
-	table = set_table(args, table);
-	printf("philos nbr: %d\n", table->philos_nbr);
-	free(table);
+	init_philos(table, philos);
+	test();
+	print_table(table);
+	free(philos);
 }
-
-// parsing
-
-/* 1st number_of_philosophers: The number of philosophers and also the number
-of forks.
-
-
-2nd: time_to_die (in milliseconds): If a philosopher didn’t start eating time_to_die
-milliseconds since the beginning of their last meal or the beginning of the sim-
-ulation, they die.
-
-3rd: time_to_eat (in milliseconds): The time it takes for a philosopher to eat.
-During that time, they will need to hold two forks.
-
-4th: time_to_sleep (in milliseconds): The time a philosopher will spend sleeping.
-
-5th: number_of_times_each_philosopher_must_eat (optional argument): If all
-philosophers have eaten at least number_of_times_each_philosopher_must_eat
-times, the simulation stops. If not specified, the simulation stops when a
-philosopher dies. */
 
 /* pseudo code
 array of chopsticks[5], 5 = same number of philos
 each chopsticks init at 1, it means is free
 when a philo grab a chopstick we set the value to 0;
-
-struct of philo[i]
-
-do {
-wait (chopstick[i])
-wait (chopstick[(i +1 ) % 5]) we use remainder because of the last philo
-
-//eat
-signal(chopstick[i])
-signal(chopstick[(i + 1) % 5])
-
-//think
-
-} while (true)
 
 // 3 ways to avoid deadlocks
 1 allow at most four philos to be sitting simultaneously

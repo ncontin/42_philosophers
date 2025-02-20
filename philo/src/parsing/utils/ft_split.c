@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:00:25 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 15:17:57 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/02/18 17:41:16 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "../../../philo.h"
 
 static int	count_words(char const *s, char c)
 {

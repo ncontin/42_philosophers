@@ -6,7 +6,7 @@
 #    By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 15:56:44 by ncontin           #+#    #+#              #
-#    Updated: 2025/02/18 15:55:25 by ncontin          ###   ########.fr        #
+#    Updated: 2025/02/19 11:48:06 by ncontin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,35 @@ SRC =	philo.c\
 		$(SRC_PARSING)\
 		$(SRC_UTILS)\
 		$(SRC_MEMORY)\
+		src/time.c\
 
-SRC_PARSING = src/parsing/checks/check_args.c src/parsing/checks/check_empty.c src/parsing/checks/check_overflow.c src/parsing/checks/check_syntax.c src/parsing/parser.c
-SRC_UTILS = src/utils/ft_atol.c src/utils/ft_bzero.c src/utils/ft_calloc.c src/utils/ft_isdigit.c src/utils/ft_putstr_fd.c src/utils/ft_split.c src/utils/ft_strdup.c src/utils/ft_strjoin.c src/utils/ft_strlen.c src/utils/ft_strtrim.c
-SRC_MEMORY = src/memory/free_array.c
+
+SRC_PARSING =	src/parsing/parser.c\
+				$(SRC_CHECKS)\
+				$(SRC_UTILS)\
+
+SRC_CHECKS =	src/parsing/checks/check_args.c\
+				src/parsing/checks/check_empty.c\
+				src/parsing/checks/check_overflow.c\
+				src/parsing/checks/check_syntax.c\
+
+SRC_UTILS =	src/parsing/utils/ft_atol.c\
+			src/parsing/utils/ft_bzero.c\
+			src/parsing/utils/ft_calloc.c\
+			src/parsing/utils/ft_isdigit.c\
+			src/parsing/utils/ft_putstr_fd.c\
+			src/parsing/utils/ft_split.c\
+			src/parsing/utils/ft_strdup.c\
+			src/parsing/utils/ft_strjoin.c\
+			src/parsing/utils/ft_strlen.c\
+			src/parsing/utils/ft_strtrim.c\
+
+SRC_MEMORY =	src/memory/free_array.c
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 CC = gcc
-CCFLAGS = -Wall -Wextra -Werror -g
+CCFLAGS = -Wall -Wextra -Werror -pthread -g
 RM = rm -f
 NAME = philo
 
@@ -36,7 +56,7 @@ $(OBJ_DIR)/%.o: %.c
 	$(CC) $(CCFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	$(RM) -r $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)

@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:24:57 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 15:28:43 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/02/18 17:41:08 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "../../../philo.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {

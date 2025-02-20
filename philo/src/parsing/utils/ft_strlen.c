@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:04:50 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 15:18:02 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/02/18 17:41:22 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "../../../philo.h"
 
 size_t	ft_strlen(const char *s)
 {
