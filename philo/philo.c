@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:12 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/20 18:49:16 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/02/24 13:27:47 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,22 @@ void	print_table(t_table *table)
 	printf("meals_per_philo: %d\n", table->meals_per_philo);
 }
 
-// void	start_dinner(t_table *table, t_philosopher *philo)
-// {
-// }
+void	init_table(t_table *table)
+{
+	table->
+}
+	void init_data(t_table *table)
+{
+	table->philos = malloc(sizeof(t_philo) * table->philos_nbr);
+	if (!table->philos)
+		return (1);
+}
 
 int	main(int argc, char **argv)
 {
 	t_table	table[1];
-	t_philo	*philos;
 
 	if (parse_args(argv, argc, table) == 1)
-		return (1);
-	philos = malloc(sizeof(t_philo) * table->philos_nbr);
-	if (!philos)
 		return (1);
 	init_philos(table, philos);
 	test();
@@ -61,38 +64,30 @@ int	main(int argc, char **argv)
 	free(philos);
 }
 
-/* pseudo code
-array of chopsticks[5], 5 = same number of philos
-each chopsticks init at 1, it means is free
-when a philo grab a chopstick we set the value to 0;
+/* Steps to Implement the Asymmetric Solution
+Initialize Mutexes
 
-// 3 ways to avoid deadlocks
-1 allow at most four philos to be sitting simultaneously
-2 allow a philo to pick up a chopstick only if both are available
-3 asymmetric solution,
-	an odd philo picks up first his left chopstick and then his right chopstick,
-an even philo picks up his right chops and the his left chops
- */
+Create an array of mutexes, one for each fork.
 
-/* The waiter solution to Dining Philosophers
-The waiter solution provides a simple way to solve the Dining Philosophers problem,
-	assuming an external entity called the waiter.
+Philosopher Routine
 
-Strategy:
+Each philosopher runs a loop:
 
-Every philosopher must request each of their (shared) chopsticks from a waiter,
-	who may refuse the request at first in order to avoid a deadlock.
+Think for a random amount of time.
 
-For convenience,
-	we assume that all philosophers request their left chopstick first,
-	then their right chopstick.
+Attempt to pick up forks:
 
-The waiter always provides chopsticks upon request unless only one chopstick remains unused. In that case,
-	the waiter honors the request only if a right chopstick is requested; requests for a left chopstick are deferred until another philosopher finishes eating.
+If the philosopher’s ID is even, pick up the left fork first,
+	then the right fork.
 
-Argument for correct deadlock avoidance: The last chopstick will only be assigned if the waiter is certain that at least one philosopher can finish eating (thereupon releasing chopsticks). Therefore,
-	the "circular wait" required for deadlock can't occur.
+If the philosopher’s ID is odd, pick up the right fork first,
+	then the left fork.
 
-No starvation; fairness (depending on your waiter); degree of concurrency...
+Eat for a random amount of time.
 
-Downside: Scalability (the waiter could become a bottleneck if the number of processors is large). */
+Put down both forks.
+
+Avoiding Deadlocks
+
+By having even and odd philosophers pick up forks in a different order,
+	you ensure that at least one philosopher can always proceed. */
