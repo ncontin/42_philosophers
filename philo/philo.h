@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:47 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/24 13:30:26 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/02/25 17:21:07 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ typedef struct s_philo
 	int				philo_id;
 	int				fork_left;
 	int				fork_right;
-	int				meals_counter;
+	int				meals_eaten;
 	long			last_meal_time;
 	pthread_t		thread;
+	pthread_mutex_t	meal_lock;
+	struct s_table	*table;
 }					t_philo;
 
 typedef struct s_table
@@ -42,7 +44,7 @@ typedef struct s_table
 	int				tt_sleep;
 	int				meals_per_philo;
 	long			start_time;
-	int				end;
+	int end_dinner; // boolean
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
 }					t_table;
@@ -51,6 +53,7 @@ long int			ft_atol(const char *nptr);
 
 // memory
 void				free_array(char **array);
+void				free_forks(t_table *table);
 
 // parsing
 int					parse_args(char **argv, int argc, t_table *table);
@@ -74,6 +77,13 @@ size_t				ft_strlen(const char *s);
 char				*ft_strtrim(char const *s1, char const *set);
 
 // time
+size_t				get_time(void);
 int					ft_usleep(size_t milliseconds);
+
+// init
+int					init_data(t_table *table);
+
+// dinner
+void				*start_routine(void *arg);
 
 #endif
