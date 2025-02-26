@@ -6,20 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:12 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/25 17:21:33 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/02/26 12:58:20 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	print_table(t_table *table)
-{
-	printf("philos_nbr: %d\n", table->philos_nbr);
-	printf("tt_die: %d\n", table->tt_die);
-	printf("tt_eat: %d\n", table->tt_eat);
-	printf("tt_sleep: %d\n", table->tt_sleep);
-	printf("meals_per_philo: %d\n", table->meals_per_philo);
-}
 
 int	main(int argc, char **argv)
 {
