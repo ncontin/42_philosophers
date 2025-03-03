@@ -6,7 +6,7 @@
 #    By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 15:56:44 by ncontin           #+#    #+#              #
-#    Updated: 2025/02/25 17:13:58 by ncontin          ###   ########.fr        #
+#    Updated: 2025/03/03 16:31:30 by ncontin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ SRC =	philo.c\
 		$(SRC_PARSING)\
 		$(SRC_UTILS)\
 		$(SRC_MEMORY)\
+		$(SRC_ROUTINE)\
 		src/time.c\
 		src/init.c\
-		src/routine.c\
 
 
 SRC_PARSING =	src/parsing/parser.c\
@@ -39,8 +39,17 @@ SRC_UTILS =	src/parsing/utils/ft_atol.c\
 			src/parsing/utils/ft_strlen.c\
 			src/parsing/utils/ft_strtrim.c\
 
-SRC_MEMORY =	src/memory/free_array.c\
-				src/memory/free_forks.c\
+SRC_MEMORY =	src/memory/destroy.c\
+				src/memory/free.c\
+				src/memory/cleanup.c\
+
+SRC_ROUTINE = 	src/routine/death.c\
+				src/routine/eat.c\
+				src/routine/forks.c\
+				src/routine/full.c\
+				src/routine/routine.c\
+				src/routine/sleep.c\
+				src/routine/think.c\
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))

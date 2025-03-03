@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"iomanip": "c"
+		"iomanip": "c",
+		"philo.h": "c",
+		"format": "c"
 	}
 }

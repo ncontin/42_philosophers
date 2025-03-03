@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:41:14 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/26 12:34:38 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/02/28 15:29:47 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static int	init_philos(t_table *table)
 		table->philos[i].fork_right = i;
 		table->philos[i].fork_left = (i + 1) % table->philos_nbr;
 		table->philos[i].meals_eaten = 0;
-		table->philos[i].last_meal_time = 0;
+		table->philos[i].last_meal_time = get_time();
 		table->philos[i].table = table;
-		pthread_mutex_init(&(table->philos[i].meal_lock), NULL);
+		pthread_mutex_init(&table->philos[i].philo_lock, NULL);
 		i++;
 	}
 	return (0);
@@ -58,8 +58,12 @@ static int	init_forks(t_table *table)
 
 static int	init_table(t_table *table)
 {
-	table->start_time = 0;
+	table->start_time = get_time();
 	table->end_dinner = 0;
+	if (pthread_mutex_init(&(table->print_mutex), NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&(table->table_lock), NULL) != 0)
+		return (1);
 	init_forks(table);
 	return (0);
 }

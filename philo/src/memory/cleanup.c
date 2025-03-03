@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_array.c                                       :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 15:24:06 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 16:05:48 by ncontin          ###   ########.fr       */
+/*   Created: 2025/02/27 17:38:23 by ncontin           #+#    #+#             */
+/*   Updated: 2025/02/28 12:50:51 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
-void	free_array(char **array)
+int	cleanup(t_table *table)
 {
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		if (array[i])
-			free(array[i]);
-		i++;
-	}
-	free(array);
+	if (destroy(table) != 0)
+		return (1);
+	free_all(table);
+	return (0);
 }
