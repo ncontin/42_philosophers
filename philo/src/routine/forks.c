@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:56:41 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/03 16:01:33 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/04 10:42:10 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	is_philo_even(t_philo *philo)
 
 void	is_philo_odd(t_philo *philo)
 {
+
 	if (philo->philo_id % 2 != 0)
 	{
 		pthread_mutex_lock(&philo->table->forks[philo->fork_right]);

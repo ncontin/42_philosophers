@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:15:17 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 17:41:02 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/04 10:33:56 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../philo.h"
+#include "../../philo.h"
 
 long int	ft_atol(const char *nptr)
 {

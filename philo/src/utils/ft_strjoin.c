@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/11 11:42:12 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 17:41:18 by ncontin          ###   ########.fr       */
+/*   Created: 2024/10/13 23:26:23 by ncontin           #+#    #+#             */
+/*   Updated: 2025/03/04 10:34:27 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../philo.h"
+#include "../../philo.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*dup;
-	int		i;
-	int		len;
+	size_t	tot_len;
+	size_t	i;
+	size_t	j;
+	char	*res;
 
-	len = ft_strlen(s);
-	dup = malloc(len + 1);
-	i = 0;
-	if (!dup)
+	if (!s1 || !s2)
 		return (NULL);
-	while (i < len)
+	i = 0;
+	tot_len = (ft_strlen(s1) + ft_strlen(s2));
+	res = malloc(tot_len + 1);
+	if (!res)
+		return (NULL);
+	while (s1[i])
 	{
-		dup[i] = s[i];
+		res[i] = s1[i];
 		i++;
 	}
-	dup[i] = '\0';
-	return (dup);
+	j = 0;
+	while (s2[j])
+		res[i++] = s2[j++];
+	res[i] = '\0';
+	return (res);
 }

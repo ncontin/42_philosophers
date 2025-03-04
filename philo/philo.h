@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:47 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/03 16:06:31 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/04 12:40:02 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_philo
 	int				meals_eaten;
 	long			last_meal_time;
 	int				done_eating;
+	int				stop;
 	pthread_t		thread;
 	pthread_mutex_t	philo_lock;
 	struct s_table	*table;

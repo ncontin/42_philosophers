@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 15:12:24 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 17:41:06 by ncontin          ###   ########.fr       */
+/*   Created: 2024/10/15 12:43:09 by ncontin           #+#    #+#             */
+/*   Updated: 2025/03/04 10:34:14 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../philo.h"
+#include "../../philo.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*ptr;
-	size_t	i;
+	int	i;
 
-	ptr = (char *)s;
+	if (!s)
+		return ;
 	i = 0;
-	while (i < n)
+	while (s[i])
 	{
-		ptr[i] = '\0';
+		write(fd, &s[i], 1);
 		i++;
 	}
 }
