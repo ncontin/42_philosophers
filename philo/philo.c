@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:12 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/04 12:47:07 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/04 17:31:44 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,6 @@ void	*monitor_philos(void *arg)
 		{
 			pthread_mutex_lock(&table->table_lock);
 			table->end_dinner = 1;
-			// pthread_mutex_lock(&table->print_mutex);
-			// printf("%ld All philosophers have eaten enough\n", get_time()
-			// 	- table->start_time);
-			// pthread_mutex_unlock(&table->print_mutex);
 			pthread_mutex_unlock(&table->table_lock);
 			return (NULL);
 		}
