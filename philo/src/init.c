@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:41:14 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/28 15:29:47 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/07 17:06:22 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static int	init_table(t_table *table)
 {
 	table->start_time = get_time();
 	table->end_dinner = 0;
+	table->full_count = 0;
 	if (pthread_mutex_init(&(table->print_mutex), NULL) != 0)
 		return (1);
 	if (pthread_mutex_init(&(table->table_lock), NULL) != 0)

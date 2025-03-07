@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:47 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/07 16:50:04 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/07 17:05:44 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_table
 	int				someone_died;
 	long			start_time;
 	int				end_dinner;
+	int				full_count;
 	pthread_mutex_t	*forks;
 	pthread_t		monitor;
 	pthread_mutex_t	print_mutex;

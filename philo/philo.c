@@ -6,13 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:12 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/07 16:49:54 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/07 16:51:55 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-
 
 int	create_threads(t_table *table)
 {

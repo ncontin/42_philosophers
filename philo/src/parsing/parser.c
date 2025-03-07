@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:08:13 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/26 13:06:40 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/07 16:56:37 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ static int	check_argc(int argc)
 {
 	if (argc < 5 || argc > 6)
 	{
-		ft_putstr_fd("Invalid args: ./philo nbr_of_philos tt_die tt_eat tt_sleep [number_of_meals]\n",
+		ft_putstr_fd("Invalid input\n", 2);
+		ft_putstr_fd("./philo nbr_philos tt_die tt_eat tt_sleep [nbr_meals]\n",
 			2);
 		return (1);
 	}
