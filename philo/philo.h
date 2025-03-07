@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:47 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/04 12:40:02 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/07 12:37:46 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ typedef struct s_philo
 	int				fork_right;
 	int				meals_eaten;
 	long			last_meal_time;
-	int				done_eating;
-	int				stop;
+	int				is_full;
 	pthread_t		thread;
 	pthread_mutex_t	philo_lock;
 	struct s_table	*table;
@@ -92,7 +91,6 @@ int					ft_usleep(size_t milliseconds);
 int					init_data(t_table *table);
 
 // dinner
-int					check_death(t_philo *philo);
 void				philo_take_forks(t_philo *philo);
 void				philo_eat(t_philo *philo);
 void				philo_drop_forks(t_philo *philo);
@@ -100,5 +98,6 @@ void				philo_sleep(t_philo *philo);
 int					is_full(t_philo *philo);
 void				philo_think(t_philo *philo);
 void				*start_routine(void *arg);
+int					is_dead(t_philo *philo);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:12 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/04 17:31:44 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/07 12:12:08 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	*monitor_philos(void *arg)
 				table->someone_died = 1;
 				pthread_mutex_unlock(&table->table_lock);
 				pthread_mutex_lock(&table->print_mutex);
-				printf("%ld %d died\n", get_time() - table->start_time,
-					table->philos[i].philo_id);
+				if (table->philos[i].is_full != 1)
+					printf("%ld %d died\n", get_time() - table->start_time,
+						table->philos[i].philo_id);
 				pthread_mutex_unlock(&table->print_mutex);
 				pthread_mutex_unlock(&table->philos[i].philo_lock);
 				return (NULL);

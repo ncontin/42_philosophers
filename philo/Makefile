@@ -6,7 +6,7 @@
 #    By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 15:56:44 by ncontin           #+#    #+#              #
-#    Updated: 2025/03/04 10:18:19 by ncontin          ###   ########.fr        #
+#    Updated: 2025/03/07 10:47:06 by ncontin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,13 +43,13 @@ SRC_MEMORY =	src/memory/destroy.c\
 				src/memory/free.c\
 				src/memory/cleanup.c\
 
-SRC_ROUTINE = 	src/routine/death.c\
-				src/routine/eat.c\
+SRC_ROUTINE = 	src/routine/eat.c\
 				src/routine/forks.c\
 				src/routine/full.c\
 				src/routine/routine.c\
 				src/routine/sleep.c\
 				src/routine/think.c\
+				src/routine/death.c\
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))

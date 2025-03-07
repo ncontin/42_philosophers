@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:57:46 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/03 15:57:55 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/05 17:18:58 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 void	philo_eat(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->table->table_lock);
+	if (philo->table->someone_died == 1)
+	{
+		pthread_mutex_unlock(&philo->table->table_lock);
+		return ;
+	}
+	pthread_mutex_unlock(&philo->table->table_lock);
 	// EAT
 	pthread_mutex_lock(&philo->philo_lock);
 	philo->last_meal_time = get_time();
