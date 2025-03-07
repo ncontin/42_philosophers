@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:47 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/07 12:37:46 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/07 16:50:04 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ int					is_full(t_philo *philo);
 void				philo_think(t_philo *philo);
 void				*start_routine(void *arg);
 int					is_dead(t_philo *philo);
+void				*monitor_philos(void *arg);
 
 #endif
