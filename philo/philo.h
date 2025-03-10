@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:47 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/07 17:05:44 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/10 13:12:23 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_philo
 	int				philo_id;
 	int				fork_left;
 	int				fork_right;
+	int				fork_left_flag;
+	int				fork_right_flag;
 	int				meals_eaten;
 	long			last_meal_time;
 	int				is_full;
@@ -56,7 +58,7 @@ typedef struct s_table
 }					t_table;
 
 long int			ft_atol(const char *nptr);
-
+void				print_fork_taken(t_philo *philo);
 // memory
 void				free_array(char **array);
 int					cleanup(t_table *table);

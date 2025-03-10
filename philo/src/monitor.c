@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:49:32 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/07 17:16:55 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/10 11:26:03 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	*monitor_philos(void *arg)
 	table = (t_table *)arg;
 	while (1)
 	{
-		if (check_death(table) == 1)
-			return (NULL);
 		if (check_full_count(table) == 1)
+			return (NULL);
+		if (check_death(table) == 1)
 			return (NULL);
 		usleep(500);
 	}

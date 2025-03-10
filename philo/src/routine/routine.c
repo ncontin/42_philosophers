@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:51:40 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/07 16:57:05 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/10 13:13:11 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@ void	*start_routine(void *arg)
 	while (!is_dead(philo) && !is_full(philo))
 	{
 		if (philo->table->philos_nbr == 1)
+		{
+			pthread_mutex_lock(&philo->table->forks[philo->fork_left]);
+			print_fork_taken(philo);
+			pthread_mutex_unlock(&philo->table->forks[philo->fork_left]);
 			return (NULL);
+		}
 		philo_take_forks(philo);
 		philo_eat(philo);
 		philo_drop_forks(philo);

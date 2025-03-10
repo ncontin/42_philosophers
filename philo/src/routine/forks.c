@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:56:41 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/07 16:38:20 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/10 12:39:44 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,15 @@ void	even_take_forks(t_philo *philo)
 {
 	if (is_dead(philo))
 		return ;
+	philo->fork_right_flag = 0;
+	philo->fork_left_flag = 0;
 	pthread_mutex_lock(&philo->table->forks[philo->fork_left]);
 	print_fork_taken(philo);
+	philo->fork_left_flag = 1;
+	if (is_dead(philo))
+		return ;
 	pthread_mutex_lock(&philo->table->forks[philo->fork_right]);
+	philo->fork_right_flag = 1;
 	print_fork_taken(philo);
 }
 
@@ -40,8 +46,12 @@ void	odd_take_forks(t_philo *philo)
 	if (is_dead(philo))
 		return ;
 	pthread_mutex_lock(&philo->table->forks[philo->fork_right]);
+	philo->fork_right_flag = 1;
 	print_fork_taken(philo);
+	if (is_dead(philo))
+		return ;
 	pthread_mutex_lock(&philo->table->forks[philo->fork_left]);
+	philo->fork_left_flag = 1;
 	print_fork_taken(philo);
 }
 
@@ -55,6 +65,10 @@ void	philo_take_forks(t_philo *philo)
 
 void	philo_drop_forks(t_philo *philo)
 {
-	pthread_mutex_unlock(&philo->table->forks[philo->fork_left]);
-	pthread_mutex_unlock(&philo->table->forks[philo->fork_right]);
+	if (philo->fork_left_flag == 1)
+		pthread_mutex_unlock(&philo->table->forks[philo->fork_left]);
+	if (philo->fork_right_flag == 1)
+		pthread_mutex_unlock(&philo->table->forks[philo->fork_right]);
+	philo->fork_right_flag = 0;
+	philo->fork_left_flag = 0;
 }
