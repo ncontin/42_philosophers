@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 12:43:09 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/04 10:34:14 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 11:46:48 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "philo.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:38:23 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/28 12:50:51 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 11:46:48 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "philo.h"
 
 int	cleanup(t_table *table)
 {

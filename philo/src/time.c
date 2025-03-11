@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:06:09 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/07 16:19:46 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 12:05:41 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 size_t	get_time(void)
 {

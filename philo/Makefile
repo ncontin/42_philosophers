@@ -6,7 +6,7 @@
 #    By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 15:56:44 by ncontin           #+#    #+#              #
-#    Updated: 2025/03/10 12:45:22 by ncontin          ###   ########.fr        #
+#    Updated: 2025/03/11 11:57:23 by ncontin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,15 +58,16 @@ CC = gcc
 CCFLAGS = -Wall -Wextra -Werror -pthread -g
 RM = rm -f
 NAME = philo
+INCLUDES = -Iincludes
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CCFLAGS) $^ -o $(NAME)
+	$(CC) $(CCFLAGS) $(INCLUDES) $^ -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CCFLAGS) -c $< -o $@
+	$(CC) $(CCFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	$(RM) -r $(OBJ_DIR)
@@ -75,3 +76,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

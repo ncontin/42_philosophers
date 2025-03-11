@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:41:14 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/10 12:32:13 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 13:01:34 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 static int	init_philos(t_table *table)
 {

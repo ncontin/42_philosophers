@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:08:13 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/07 16:56:37 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 13:05:36 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "philo.h"
 
 static char	*join_args(char **argv)
 {
@@ -78,5 +78,11 @@ int	parse_args(char **argv, int argc, t_table *table)
 	if (check_args(argv, args) == 1)
 		return (1);
 	set_table(args, table);
+	if (table->philos_nbr == 0)
+	{
+		ft_putstr_fd("Invalid input\n", 2);
+		ft_putstr_fd("nbr_philos must be at least one\n", 2);
+		return (1);
+	}
 	return (0);
 }

@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:51:40 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/10 13:13:11 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 16:08:42 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "philo.h"
 
 void	*start_routine(void *arg)
 {
@@ -18,7 +18,7 @@ void	*start_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	if (philo->philo_id % 2 == 0)
-		usleep(50);
+		usleep(500);
 	while (!is_dead(philo) && !is_full(philo))
 	{
 		if (philo->table->philos_nbr == 1)

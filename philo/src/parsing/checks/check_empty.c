@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:57:12 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/18 15:55:30 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 11:46:53 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../philo.h"
+#include "philo.h"
 
 int	check_empty(char **args)
 {

@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:49:32 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/10 11:26:03 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 16:18:17 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 static int	check_death(t_table *table)
 {

@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 16:00:50 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/07 16:32:08 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 11:58:40 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "philo.h"
 
 void	philo_sleep(t_philo *philo)
 {

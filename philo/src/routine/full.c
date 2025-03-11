@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:58:53 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/10 10:58:46 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 11:58:35 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "philo.h"
 
 int	is_full(t_philo *philo)
 {

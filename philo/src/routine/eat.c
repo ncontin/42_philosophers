@@ -6,18 +6,17 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:57:46 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/10 12:51:34 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 12:25:10 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "philo.h"
 
 void	philo_eat(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->philo_lock);
 	if (is_dead(philo))
 	{
-		// philo_drop_forks(philo);
 		pthread_mutex_unlock(&philo->philo_lock);
 		return ;
 	}

@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:24:06 by ncontin           #+#    #+#             */
-/*   Updated: 2025/02/28 12:50:40 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 11:46:48 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "philo.h"
 
 void	free_array(char **array)
 {

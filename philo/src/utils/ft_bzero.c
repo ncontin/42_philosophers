@@ -6,11 +6,11 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:12:24 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/04 10:34:03 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/11 12:25:01 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../philo.h"
+#include "philo.h"
 
 void	ft_bzero(void *s, size_t n)
 {
