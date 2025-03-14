@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:56:41 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/11 16:10:52 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/14 11:20:45 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_fork_taken(t_philo *philo)
 	pthread_mutex_unlock(&philo->table->table_lock);
 }
 
-void	even_take_forks(t_philo *philo)
+static void	even_take_forks(t_philo *philo)
 {
 	if (is_dead(philo))
 		return ;
@@ -39,7 +39,7 @@ void	even_take_forks(t_philo *philo)
 	print_fork_taken(philo);
 }
 
-void	odd_take_forks(t_philo *philo)
+static void	odd_take_forks(t_philo *philo)
 {
 	if (is_dead(philo))
 		return ;
@@ -56,9 +56,9 @@ void	odd_take_forks(t_philo *philo)
 void	philo_take_forks(t_philo *philo)
 {
 	if (philo->philo_id % 2 == 0)
-		even_take_forks(philo);
-	else
 		odd_take_forks(philo);
+	else
+		even_take_forks(philo);
 }
 
 void	philo_drop_forks(t_philo *philo)

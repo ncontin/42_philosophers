@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:47 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/10 13:12:23 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/14 11:24:28 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@
 # include <string.h>
 # include <sys/time.h>
 # include <unistd.h>
-
-# define TRUE 1
-# define FALSE 0
 
 typedef struct s_philo
 {
@@ -57,11 +54,9 @@ typedef struct s_table
 	t_philo			*philos;
 }					t_table;
 
-long int			ft_atol(const char *nptr);
-void				print_fork_taken(t_philo *philo);
 // memory
-void				free_array(char **array);
 int					cleanup(t_table *table);
+void				free_array(char **array);
 void				free_all(t_table *table);
 int					destroy(t_table *table);
 
@@ -85,6 +80,7 @@ char				*ft_strdup(const char *s);
 char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlen(const char *s);
 char				*ft_strtrim(char const *s1, char const *set);
+long int			ft_atol(const char *nptr);
 
 // time
 size_t				get_time(void);
@@ -93,15 +89,16 @@ int					ft_usleep(size_t milliseconds);
 // init
 int					init_data(t_table *table);
 
-// dinner
-void				philo_take_forks(t_philo *philo);
+// routine
+int					is_dead(t_philo *philo);
 void				philo_eat(t_philo *philo);
+void				philo_take_forks(t_philo *philo);
+void				print_fork_taken(t_philo *philo);
 void				philo_drop_forks(t_philo *philo);
 void				philo_sleep(t_philo *philo);
 int					is_full(t_philo *philo);
 void				philo_think(t_philo *philo);
 void				*start_routine(void *arg);
-int					is_dead(t_philo *philo);
 void				*monitor_philos(void *arg);
 
 #endif

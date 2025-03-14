@@ -6,7 +6,7 @@
 #    By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 15:56:44 by ncontin           #+#    #+#              #
-#    Updated: 2025/03/11 11:57:23 by ncontin          ###   ########.fr        #
+#    Updated: 2025/03/14 11:12:17 by ncontin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ SRC =	philo.c\
 
 SRC_PARSING =	src/parsing/parser.c\
 				$(SRC_CHECKS)\
-				$(SRC_UTILS)\
 
 SRC_CHECKS =	src/parsing/checks/check_args.c\
 				src/parsing/checks/check_empty.c\
@@ -54,8 +53,8 @@ SRC_ROUTINE = 	src/routine/eat.c\
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
-CC = gcc
-CCFLAGS = -Wall -Wextra -Werror -pthread -g
+CC = cc
+CCFLAGS = -Wall -Wextra -Werror -pthread
 RM = rm -f
 NAME = philo
 INCLUDES = -Iincludes
