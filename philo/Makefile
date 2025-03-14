@@ -6,7 +6,7 @@
 #    By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 15:56:44 by ncontin           #+#    #+#              #
-#    Updated: 2025/03/14 11:12:17 by ncontin          ###   ########.fr        #
+#    Updated: 2025/03/14 12:30:23 by ncontin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ SRC_ROUTINE = 	src/routine/eat.c\
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 CC = cc
-CCFLAGS = -Wall -Wextra -Werror -pthread
+CCFLAGS = -Wall -Wextra -Werror -pthread -g
 RM = rm -f
 NAME = philo
 INCLUDES = -Iincludes

@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:57:46 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/11 12:25:10 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/14 12:05:04 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,10 @@ void	philo_eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->philo_lock);
 	pthread_mutex_lock(&philo->philo_lock);
 	philo->last_meal_time = get_time();
-	if (!is_dead(philo))
-	{
-		pthread_mutex_lock(&philo->table->print_mutex);
-		printf("%ld %d is eating\n", get_time() - philo->table->start_time,
-			philo->philo_id);
-		pthread_mutex_unlock(&philo->table->print_mutex);
-	}
+	pthread_mutex_lock(&philo->table->print_mutex);
+	printf("%ld %d is eating\n", get_time() - philo->table->start_time,
+		philo->philo_id);
+	pthread_mutex_unlock(&philo->table->print_mutex);
 	philo->meals_eaten++;
 	pthread_mutex_unlock(&philo->philo_lock);
 	ft_usleep(philo->table->tt_eat);

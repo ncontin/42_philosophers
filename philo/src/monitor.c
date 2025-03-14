@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:49:32 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/11 16:18:17 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/14 16:40:27 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,30 @@ static int	check_death(t_table *table)
 static int	check_full_count(t_table *table)
 {
 	int	i;
+	int	full_count;
 
+	full_count = 0;
 	i = 0;
 	while (i < table->philos_nbr)
 	{
 		pthread_mutex_lock(&table->philos[i].philo_lock);
-		if (table->philos[i].meals_eaten >= table->meals_per_philo)
-			table->full_count++;
+		if (table->philos[i].is_full == 1)
+			full_count++;
 		pthread_mutex_unlock(&table->philos[i].philo_lock);
 		i++;
 	}
-	if (table->full_count == table->philos_nbr && table->meals_per_philo > 0)
+	pthread_mutex_lock(&table->table_lock);
+	table->full_count = full_count;
+	// printf("After checking: full_count = %d (need %d)\n", table->full_count,
+	//	table->philos_nbr);
+	if (full_count == table->philos_nbr && table->meals_per_philo > 0)
 	{
-		pthread_mutex_lock(&table->table_lock);
+		// pthread_mutex_lock(&table->table_lock);
 		table->end_dinner = 1;
 		pthread_mutex_unlock(&table->table_lock);
 		return (1);
 	}
+	pthread_mutex_unlock(&table->table_lock);
 	return (0);
 }
 
@@ -75,7 +82,7 @@ void	*monitor_philos(void *arg)
 			return (NULL);
 		if (check_death(table) == 1)
 			return (NULL);
-		usleep(500);
+		// usleep(500);
 	}
 	return (NULL);
 }
