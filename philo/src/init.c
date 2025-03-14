@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:41:14 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/11 13:01:34 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/14 17:37:05 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ static int	init_philos(t_table *table)
 		table->philos[i].fork_left_flag = 0;
 		table->philos[i].fork_right_flag = 0;
 		table->philos[i].table = table;
-		pthread_mutex_init(&table->philos[i].philo_lock, NULL);
+		if (pthread_mutex_init(&table->philos[i].philo_lock, NULL) != 0)
+			return (1);
+		if (pthread_mutex_init(&table->philos[i].forks_lock, NULL) != 0)
+			return (1);
 		i++;
 	}
 	return (0);

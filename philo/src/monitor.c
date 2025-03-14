@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:49:32 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/14 16:40:27 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/14 17:02:24 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,8 @@ static int	check_full_count(t_table *table)
 	}
 	pthread_mutex_lock(&table->table_lock);
 	table->full_count = full_count;
-	// printf("After checking: full_count = %d (need %d)\n", table->full_count,
-	//	table->philos_nbr);
 	if (full_count == table->philos_nbr && table->meals_per_philo > 0)
 	{
-		// pthread_mutex_lock(&table->table_lock);
 		table->end_dinner = 1;
 		pthread_mutex_unlock(&table->table_lock);
 		return (1);
@@ -82,7 +79,7 @@ void	*monitor_philos(void *arg)
 			return (NULL);
 		if (check_death(table) == 1)
 			return (NULL);
-		// usleep(500);
+		usleep(500);
 	}
 	return (NULL);
 }
