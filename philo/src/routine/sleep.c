@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 16:00:50 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/11 11:58:40 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/19 16:58:31 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ void	philo_sleep(t_philo *philo)
 		philo->philo_id);
 	pthread_mutex_unlock(&philo->table->print_mutex);
 	ft_usleep(philo->table->tt_sleep);
+	usleep(100);
 }

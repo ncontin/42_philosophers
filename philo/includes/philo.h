@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:47 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/14 17:36:55 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/19 16:57:00 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_table
 	int				end_dinner;
 	int				full_count;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	lock;
 	pthread_t		monitor;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	table_lock;

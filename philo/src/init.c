@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:41:14 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/14 17:37:05 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/03/19 16:58:36 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ static int	init_table(t_table *table)
 	if (pthread_mutex_init(&(table->print_mutex), NULL) != 0)
 		return (1);
 	if (pthread_mutex_init(&(table->table_lock), NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&(table->lock), NULL) != 0)
 		return (1);
 	if (init_forks(table) != 0)
 		return (1);
