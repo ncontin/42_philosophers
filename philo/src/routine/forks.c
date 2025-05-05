@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:56:41 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/19 17:07:32 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/05/05 15:12:09 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,45 @@ static void	odd_take_forks(t_philo *philo)
 
 void	philo_take_forks(t_philo *philo)
 {
-	if (philo->philo_id % 2 == 0)
+	if (philo->table->philos_nbr % 2 == 0)
 	{
-		//		pthread_mutex_lock(&philo->forks_lock);
-		pthread_mutex_lock(&philo->table->lock);
-		odd_take_forks(philo);
-		pthread_mutex_unlock(&philo->table->lock);
-		//		pthread_mutex_unlock(&philo->forks_lock);
+		if (philo->philo_id % 2 == 0)
+		{
+			//		pthread_mutex_lock(&philo->forks_lock);
+			// pthread_mutex_lock(&philo->table->lock);
+			even_take_forks(philo);
+			// pthread_mutex_unlock(&philo->table->lock);
+			//		pthread_mutex_unlock(&philo->forks_lock);
+		}
+		else
+		{
+			// ft_usleep(50);
+			// pthread_mutex_lock(&philo->table->lock);
+			odd_take_forks(philo);
+			// pthread_mutex_lock(&philo->forks_lock);
+			// pthread_mutex_unlock(&philo->table->lock);
+			// pthread_mutex_unlock(&philo->forks_lock);
+		}
 	}
 	else
 	{
-		pthread_mutex_lock(&philo->table->lock);
-		// pthread_mutex_lock(&philo->forks_lock);
-		even_take_forks(philo);
-		pthread_mutex_unlock(&philo->table->lock);
-		// pthread_mutex_unlock(&philo->forks_lock);
+		if (philo->philo_id % 2 == 0)
+		{
+			//		pthread_mutex_lock(&philo->forks_lock);
+			// pthread_mutex_lock(&philo->table->lock);
+			odd_take_forks(philo);
+			// pthread_mutex_unlock(&philo->table->lock);
+			//		pthread_mutex_unlock(&philo->forks_lock);
+		}
+		else
+		{
+			// ft_usleep(50);
+			// pthread_mutex_lock(&philo->table->lock);
+			// pthread_mutex_lock(&philo->forks_lock);
+			even_take_forks(philo);
+			// pthread_mutex_unlock(&philo->table->lock);
+			// pthread_mutex_unlock(&philo->forks_lock);
+		}
 	}
 }
 
