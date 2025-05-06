@@ -6,7 +6,7 @@
 #    By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 15:56:44 by ncontin           #+#    #+#              #
-#    Updated: 2025/03/14 12:30:23 by ncontin          ###   ########.fr        #
+#    Updated: 2025/05/06 11:57:32 by ncontin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,20 +59,31 @@ RM = rm -f
 NAME = philo
 INCLUDES = -Iincludes
 
+# Define colors for terminal output
+GREEN = \033[0;32m
+RED = \033[0;31m
+YELLOW = \033[0;33m
+BLUE = \033[0;34m
+RESET = \033[0m
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CCFLAGS) $(INCLUDES) $^ -o $(NAME)
+	@$(CC) $(CCFLAGS) $(INCLUDES) $^ -o $(NAME)
+	@echo "$(GREEN)$(NAME) successfully built!$(RESET)"
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CCFLAGS) $(INCLUDES) -c $< -o $@
+	@echo "$(BLUE)Compiling $<...$(RESET)"
+	@$(CC) $(CCFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	$(RM) -r $(OBJ_DIR)
+	@echo "$(RED)Cleaning object files...$(RESET)"
+	@$(RM) -r $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@echo "$(RED)Removing $(NAME)...$(RESET)"
+	@rm -f $(NAME)
 
 re: fclean all
 
