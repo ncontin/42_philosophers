@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 15:56:12 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/11 16:18:13 by ncontin          ###   ########.fr       */
+/*   Created: 2025/05/12 11:49:36 by ncontin           #+#    #+#             */
+/*   Updated: 2025/05/12 11:50:17 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,22 +54,5 @@ int	join_threads(t_table *table)
 		}
 		i++;
 	}
-	return (0);
-}
-
-int	main(int argc, char **argv)
-{
-	t_table	table;
-
-	if (parse_args(argv, argc, &table) == 1)
-		return (1);
-	if (init_data(&table) == 1)
-		return (1);
-	if (create_threads(&table) == 1)
-		return (1);
-	if (join_threads(&table) == 1)
-		return (1);
-	if (cleanup(&table) == 1)
-		return (1);
 	return (0);
 }

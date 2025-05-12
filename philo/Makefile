@@ -6,18 +6,19 @@
 #    By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 15:56:44 by ncontin           #+#    #+#              #
-#    Updated: 2025/05/06 11:57:32 by ncontin          ###   ########.fr        #
+#    Updated: 2025/05/12 11:50:45 by ncontin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =	philo.c\
+SRC =	src/main.c\
+		src/time.c\
+		src/init.c\
+		src/monitor.c\
+		src/threads.c\
 		$(SRC_PARSING)\
 		$(SRC_UTILS)\
 		$(SRC_MEMORY)\
 		$(SRC_ROUTINE)\
-		src/time.c\
-		src/init.c\
-		src/monitor.c\
 
 
 SRC_PARSING =	src/parsing/parser.c\

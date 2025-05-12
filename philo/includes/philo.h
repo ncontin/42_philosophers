@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:47 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/19 16:57:00 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/05/12 11:51:34 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ typedef struct s_table
 	pthread_mutex_t	table_lock;
 	t_philo			*philos;
 }					t_table;
+
+int					create_threads(t_table *table);
+int					join_threads(t_table *table);
 
 // memory
 int					cleanup(t_table *table);

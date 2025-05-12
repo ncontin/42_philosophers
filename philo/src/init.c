@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:41:14 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/19 16:58:36 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/05/12 11:53:48 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	init_forks(t_table *table)
 		if (pthread_mutex_init(&table->forks[i], NULL) != 0)
 		{
 			while (i > 0)
-				pthread_mutex_destroy(&table->forks[i--]);
+				pthread_mutex_destroy(&table->forks[--i]);
 			free(table->forks);
 			return (1);
 		}
