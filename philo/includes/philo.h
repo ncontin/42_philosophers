@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:56:47 by ncontin           #+#    #+#             */
-/*   Updated: 2025/05/12 11:51:34 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/05/12 12:33:24 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_philo
 	int				meals_eaten;
 	long			last_meal_time;
 	int				is_full;
-	pthread_mutex_t	forks_lock;
 	pthread_t		thread;
 	pthread_mutex_t	philo_lock;
 	struct s_table	*table;
@@ -46,10 +45,8 @@ typedef struct s_table
 	int				meals_per_philo;
 	int				someone_died;
 	long			start_time;
-	int				end_dinner;
 	int				full_count;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	lock;
 	pthread_t		monitor;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	table_lock;

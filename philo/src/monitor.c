@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:49:32 by ncontin           #+#    #+#             */
-/*   Updated: 2025/05/12 12:20:36 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/05/12 12:32:06 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static int	check_full_count(t_table *table)
 	table->full_count = full_count;
 	if (full_count == table->philos_nbr && table->meals_per_philo > 0)
 	{
-		table->end_dinner = 1;
 		pthread_mutex_unlock(&table->table_lock);
 		return (1);
 	}

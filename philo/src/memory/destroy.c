@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:40:59 by ncontin           #+#    #+#             */
-/*   Updated: 2025/03/14 17:37:39 by ncontin          ###   ########.fr       */
+/*   Updated: 2025/05/12 12:30:21 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	destroy(t_table *table)
 		if (pthread_mutex_destroy(&table->forks[i]) != 0)
 			return (1);
 		if (pthread_mutex_destroy(&table->philos[i].philo_lock) != 0)
-			return (1);
-		if (pthread_mutex_destroy(&table->philos[i].forks_lock) != 0)
 			return (1);
 		i++;
 	}
